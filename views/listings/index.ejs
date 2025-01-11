@@ -1,0 +1,114 @@
+<% layout("layouts/boilerplate") %>
+
+    <body>
+        <div class="filter-carousel mt-2">
+            <!-- Category Bar -->
+            <div class="filter-wrapper">
+                <div class="filters">
+                    <div class="filter" data-category="Trending">
+                        <div><i class="fa-solid fa-fire"></i></div>
+                        <p>Trending</p>
+                    </div>
+                    <div class="filter" data-category="Rooms">
+                        <div><i class="fa-solid fa-bed"></i></div>
+                        <p>Rooms</p>
+                    </div>
+                    <div class="filter" data-category="Iconic Cities">
+                        <div><i class="fa-solid fa-mountain-city"></i></div>
+                        <p>Iconic Cities</p>
+                    </div>
+                    <div class="filter" data-category="Castle">
+                        <div><i class="fa-brands fa-fort-awesome"></i></div>
+                        <p>Castle</p>
+                    </div>
+                    <div class="filter" data-category="Amazing Pools">
+                        <div><i class="fa-solid fa-person-swimming"></i></div>
+                        <p>Amazing Pools</p>
+                    </div>
+                    <div class="filter" data-category="Camping">
+                        <div><i class="fa-solid fa-campground"></i></div>
+                        <p>Camping</p>
+                    </div>
+                    <div class="filter" data-category="Farms">
+                        <div><i class="fa-solid fa-tractor"></i></div>
+                        <p>Farms</p>
+                    </div>
+                    <div class="filter" data-category="Arctic">
+                        <div><i class="fa-solid fa-snowflake"></i></div>
+                        <p>Arctic</p>
+                    </div>
+                    <div class="filter" data-category="Mountains">
+                        <div><i class="fa-solid fa-mountain"></i></div>
+                        <p>Mountains</p>
+                    </div>
+                    <div class="filter" data-category="Domes">
+                        <div><i class="fa-solid fa-igloo"></i></div>
+                        <p>Domes</p>
+                    </div>
+                    <div class="filter" data-category="Boats">
+                        <div><i class="fa-solid fa-ship"></i></div>
+                        <p>Boats</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Toggle Button -->
+            <div class="tax-toggle">
+                <div class="toggle-box">
+                    <div class="form-check-reverse form-switch">
+                        <input class="form-check-input custom-switch" type="checkbox" role="switch"
+                            id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <%for(let listing of allListings){%>
+                <a href="/listings/<%=listing._id%>" class="listing-link" data-category="<%= listing.category %>">
+                    <div class="card col listing-cart">
+                        <img src="<%=listing.image.url%>" class="card-img-top" style="height:20rem" alt="listing_image">
+                        <div class="card-img-overlay"><i>
+                                <%=listing.title%>
+                            </i></div>
+                        <div class="card-body">
+                            <p class="card-text"><b>
+                                    <%=listing.title%>
+                                </b></p>
+                            <p class="card-text">
+                                &#8377; <%= listing.price !=null ? listing.price.toLocaleString('en-IN') : 'N/A' %>
+                                    /Night
+                                    <i class="tax-info"> &nbsp;&nbsp; +18% GST</i>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <%}%>
+                <br>
+        </div>
+        <script>
+            // JavaScript to handle toggle functionality
+            const toggle = document.getElementById('flexSwitchCheckDefault');
+            const priceElements = document.querySelectorAll('.listing-link');
+    
+            toggle.addEventListener('change', function () {
+                priceElements.forEach((listing) => {
+                    const priceElement = listing.querySelector('.price');
+                    const originalPrice = parseFloat(priceElement.textContent.replace(/,/g, '')); // Get the price and remove commas
+    
+                    if (toggle.checked && originalPrice) {
+                        const priceWithGST = originalPrice * 1.18;  // Calculate 18% GST
+                        priceElement.textContent = priceWithGST.toLocaleString('en-IN'); // Update displayed price
+                    } else {
+                        priceElement.textContent = originalPrice.toLocaleString('en-IN');  // Reset to original price
+                    }
+                });
+            });
+        </script>
+    </body>

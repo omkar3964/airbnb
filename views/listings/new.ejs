@@ -1,0 +1,64 @@
+<% layout("layouts/boilerplate") %>
+<body>
+    <div class="mb-3 row offset-2">
+        <div class="col-8">
+            <br>
+        <h3>Add New One</h3>
+        <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+            <div>
+                <label for="title" class="form-label">Title:</label>
+                <input name="listing[title]" type="text" placeholder="My town" class="form-control" required>
+                <div class="valid-feedback">Good title!</div>
+            </div>
+            <div>
+                <label for="description" class="form-label">Description:</label>
+                <textarea name="listing[description]"class="form-control" required>Sweet house</textarea>
+                <div class="invalid-feedback">Please enter a short desciption</div>
+            </div>
+            <div>
+                <label for="category" class="form-label">Category:</label>
+                <select name="listing[category]" id="category" class="form-control" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Trending">Trending</option>
+                    <option value="Rooms">Rooms</option>
+                    <option value="Iconic Cities">Iconic Cities</option>
+                    <option value="Castle">Castle</option>
+                    <option value="Amazing Pools">Amazing Pools</option>
+                    <option value="Camping">Camping</option>
+                    <option value="Farms">Farms</option>
+                    <option value="Arctic">Arctic</option>
+                    <option value="Mountains">Mountains</option>
+                    <option value="Domes">Domes</option>
+                    <option value="Boats">Boats</option>
+                </select>
+                <div class="invalid-feedback">Please select a valid category.</div>
+            </div>
+            <div>
+                <label for="image" class="form-label">upload Image:</label>
+                <input name="listing[image]" type="file" placeholder="img url"class="form-control" required >
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="price" class="form-label">Price:</label>
+                    <input name="listing[price]" placeholder="1200" class="form-control"required>
+                    <div class="invalid-feedback">Price should be valid!</div>
+                </div>
+                <div class="col-md-8">
+                    <label for="country" class="form-label">Country:</label>
+                    <input name="listing[country]" type="text" placeholder="India" class="form-control"required>
+                    <div class="invalid-feedback">enter a valid Country!</div>
+                </div>
+            </div>
+            <div>
+                <label for="location" class="form-label">Location:</label>
+                <input name="listing[location]" type="text" placeholder="Maharastra, india" class="form-control" required>
+                <div class="invalid-feedback">Location should be valid!</div>
+            </div>
+            <br>
+            <button class="btn btn-dark add-btn">Add</button>
+        </form>
+    </div>
+    </div>
+    
+</body>
+</html>

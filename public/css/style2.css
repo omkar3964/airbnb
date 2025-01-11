@@ -1,0 +1,103 @@
+/* Main container for filter and toggle button */
+.filter-carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap; 
+  width: 100%;
+  overflow-x: hidden;
+  
+}
+
+/* Category bar (filter wrapper) */
+.filter-wrapper {
+  margin-top: 5px;
+  height: 90px;
+  width: 75%; 
+  display: flex;
+  overflow-x: auto; 
+  scroll-behavior: smooth; 
+}
+
+.filters {
+  display: flex;
+  gap: 0.3rem; 
+  min-width: 100px;
+  max-width: 100%;
+  flex-shrink: 0;
+  
+
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding :5px ;
+  min-width: 120px;
+  border-left: 1.5px solid #f4f1f1;
+  border-radius: 30px;
+  color: rgb(122, 121, 121);
+  
+}
+
+/* Toggle button container */
+.tax-toggle {
+  width: 20%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Box design for toggle button */
+.toggle-box {
+  border: 1px solid #ccc;
+  padding: 15px 3px 15px 0;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle button styling */
+.custom-switch:checked {
+  background-color: red !important;
+}
+
+.custom-switch:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25) !important;
+}
+
+
+
+.filter:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.filter.active {
+  color: rgb(71, 69, 69);
+  font-weight:400;
+  text-decoration:underline;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .filter-carousel {
+    flex-direction: column;
+  }
+
+  .filter-wrapper {
+    width: 100%; 
+  }
+
+  .tax-toggle {
+    width: 100%;
+    margin-top: 1rem; 
+  }
+}
