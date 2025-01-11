@@ -11,13 +11,12 @@ module.exports.destination = async (req,res)=>{
     const searchQuery = {
         $or: keywords.map((keyword) => ({
             $or: [
-                { title: new RegExp(keyword, 'i') }, // Match in hotelName
-                { location: new RegExp(keyword, 'i') },  // Match in location
-                { country: new RegExp(keyword, 'i') },   // Match in country
+                { title: new RegExp(keyword, 'i') }, 
+                { location: new RegExp(keyword, 'i') },  
+                { country: new RegExp(keyword, 'i') },   
             ],
         })),
     };
-    console.log(searchQuery);
     const allListings = await Listing.find(searchQuery);
     res.render('listings/index.ejs',{allListings});
 };
@@ -25,7 +24,6 @@ module.exports.destination = async (req,res)=>{
 
 module.exports.index = async (req,res)=>{
     const allListings = await Listing.find({});
-    // console.log(allListings);
     res.render('listings/index.ejs',{allListings});
 };
 
