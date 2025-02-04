@@ -9,26 +9,30 @@ const upload = multer({ storage });
 
 
 const listingController = require('../controllers/listings.js');
+// omkar malbhare
 
-router.route("/")
+
+router.route("/").get( wrapAsync(listingController.index))
+    
+router.route("/listings/")
     .get( wrapAsync(listingController.index))
     .post(isLoggedIn,upload.single("listing[image]"),
     wrapAsync(listingController.createListing));
    
 // new route
-router.get("/new",isLoggedIn, listingController.renderNewForm);
+router.get("/listings/new",isLoggedIn, listingController.renderNewForm);
 
 // search
-router.get("/find/dest", wrapAsync(listingController.destination));
+router.get("/listings/find/dest", wrapAsync(listingController.destination));
 
 // show route
-router.route("/:id")
+router.route("/listings/:id")
     .get(wrapAsync(listingController.showListing))
     .put(isLoggedIn,isOwner,upload.single("listing[image]"),validateListing, wrapAsync(listingController.updateListing))
     .delete(isLoggedIn,isOwner,wrapAsync( listingController.destroyListing)) 
 
 
 // Edit route
-router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEditForm));
+router.get("/listings/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEditForm));
 
 module.exports = router;

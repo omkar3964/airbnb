@@ -84,9 +84,9 @@ app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")))
 
 
-app.use('/listings',listingRouter);
+app.use('/',listingRouter);
+app.use('/user',userRouter);
 app.use('/listings/:id/reviews',reviewRouter);
-app.use('/',userRouter);
 
 
 app.all("*",(req,res, next)=>{

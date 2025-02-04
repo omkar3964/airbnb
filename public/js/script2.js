@@ -13,8 +13,8 @@ taxSwitch.addEventListener('click', () => {
 // filter logic
 document.addEventListener('DOMContentLoaded', function () {
   const filters = document.querySelectorAll('.filter');
-  const listings = document.querySelectorAll('.listing-link'); 
-  const selectedCategories = new Set(); 
+  const listings = document.querySelectorAll('.listing-link');
+  const selectedCategories = new Set();
 
   filters.forEach(filter => {
     filter.addEventListener('click', function () {
